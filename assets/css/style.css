@@ -1,0 +1,73 @@
+body{
+	text-align: center;
+	color: #1bda37;
+}
+
+section{
+	border-radius: 8px;
+	margin: 20px 0;
+	height: 100%;
+}
+
+.bg-black{
+	background-color: black;
+}
+
+.bg-black.bg-segment{
+	background: #000000 url("../images/segmentBorder.svg") no-repeat top left;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bg-black.bg-segment.bg-quad{
+	background-image:url("../images/segmentBorder1.svg"), url("../images/segmentBorder2.svg"), url("../images/segmentBorder3.svg"), url("../images/segmentBorder4.svg");
+	background-repeat: no-repeat;
+	background-position: top left, top right, bottom right, bottom left;
+}
+
+.bg-black.bg-segment.bg-top{
+	background-image:url("../images/segmentBorder1.svg"), url("../images/segmentBorder2.svg");
+	background-repeat: no-repeat;
+	background-position: top left, top right;
+}
+
+.bg-black.bg-segment.bg-bottom{
+	background-image:url("../images/segmentBorder3.svg"), url("../images/segmentBorder4.svg");
+	background-repeat: no-repeat;
+	background-position: bottom right, bottom left;
+}
+
+.bg-black.bg-segment.bg-tlbr{
+	background-image:url("../images/segmentBorder1.svg"), url("../images/segmentBorder3.svg");
+	background-repeat: no-repeat;
+	background-position: top left, bottom right;
+}
+
+.bg-black.bg-segment.bg-nbr{
+	background-image:url("../images/segmentBorder1.svg"), url("../images/segmentBorder2.svg"), url("../images/segmentBorder3.svg"), url("../images/segmentBorder4.svg");
+	background-repeat: no-repeat;
+	background-position: top left, top right, bottom right, bottom left;
+}
+
+.text-white{
+	color: white;
+}
+
+.text-green{
+	color: #1bda37;
+}
+
+div#timeDiv{
+	margin-top: 30px;
+	color: #1bda37;
+	font-size: 50px;
+}
+
+div#qdiv{
+
+}
+
+div#timeDiv{
+	
+}
