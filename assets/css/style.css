@@ -9,6 +9,10 @@ section{
 	height: 100%;
 }
 
+h1{
+	font-size: 60px;
+}
+
 .bg-black{
 	background-color: black;
 }
@@ -45,9 +49,9 @@ section{
 }
 
 .bg-black.bg-segment.bg-nbr{
-	background-image:url("../images/segmentBorder1.svg"), url("../images/segmentBorder2.svg"), url("../images/segmentBorder3.svg"), url("../images/segmentBorder4.svg");
+	background-image:url("../images/segmentBorder1.svg"), url("../images/segmentBorder2.svg"), url("../images/segmentBorder4.svg");
 	background-repeat: no-repeat;
-	background-position: top left, top right, bottom right, bottom left;
+	background-position: top left, top right, bottom left;
 }
 
 .text-white{
@@ -61,13 +65,37 @@ section{
 div#timeDiv{
 	margin-top: 30px;
 	color: #1bda37;
+	font-size: 100px;
+}
+
+div#qDiv{
+	padding: 20px;
+	font-size: 20px;
+}
+
+div#aDiv{
+	padding: 30px 0;
+}
+
+button.btn{
+	border: #1bda37 3px solid;
+	background-color: black;
+	color: #1bda37;
+	margin: 10px 10px;
+	width: 90%;
+	padding: 10px 10px;
+}
+
+div#final{
+	position: fixed;
+	top:30%;
+	left: 15%;
+	height: 40%;
+	width: 70%;
 	font-size: 50px;
+	padding: 30px 0;
 }
 
-div#qdiv{
-
-}
-
-div#timeDiv{
-	
+#final div{
+	font-size: 30px;
 }
