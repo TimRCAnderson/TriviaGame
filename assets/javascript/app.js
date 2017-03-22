@@ -214,5 +214,11 @@ $(document).ready(function() {
 		}
 	}
 
+function start()
+{
+	$("#startScreen").addClass("hidden");
 	game.actions.restart();
+}
+
+$("#startButton").click(start);
 });

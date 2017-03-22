@@ -110,3 +110,21 @@ div#interval{
 #final div{
 	font-size: 30px;
 }
+
+div#startScreen{
+	position: absolute;
+	z-index: 10;
+	top: 3%;
+	left: 3%;
+	width: 94%;
+	height: 94%;
+}
+
+#startScreen div{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	width: 80%;
+	margin-left: -40%;
+	display: block;
+}
