@@ -1,4 +1,5 @@
 body{
+	font-family: 'Roboto Mono', monospace;
 	text-align: center;
 	color: #1bda37;
 }
@@ -94,6 +95,17 @@ div#final{
 	width: 70%;
 	font-size: 50px;
 	padding: 30px 0;
+}
+
+div#interval{
+	position: absolute;
+	top:30%;
+	left: 15%;
+	height: 40%;
+	width: 70%;
+	font-size: 50px;
+	padding: 6% 0;
+	vertical-align: center;
 }
 
 #final div{

@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var $answers = $("#aDiv");
 	var $buttons = $("button");
 	var $score = $("#final");
+	var $inter = $("#interval");
 	var gameTimer;
 
 	function findInArray(arr, data, property)
@@ -22,35 +23,50 @@ $(document).ready(function() {
 			{
 				if(t < 1000 && t > 10)
 				{
-					return ("0" + Math.floor(t / 100) + ":" + (t % 100));
+					if(t % 100 >= 10)
+					{
+						return ("0" + Math.floor(t / 100) + ":" + (t % 100));
+					}
+					else
+					{
+						return ("0" + Math.floor(t / 100) + ":0" + (t % 100));
+					}
 				}
-				else if(t > 10)
+				else if(t < 10)
 				{
-					return (Math.floor(t / 100) + ":" + (t % 100));
+					return ("00:0" + t);
 				}
 				else
 				{
-					return ("00:0" + t);
+					if(t % 100 >= 10)
+					{
+						return (Math.floor(t / 100) + ":" + (t % 100));
+					}
+					else
+					{
+						return (Math.floor(t / 100) + ":0" + (t % 100));
+					}
 				}
 			},
 			timeDisplay: function()
 			{
-				game.timer.time --;
+				game.timer.time--;
 				$time.text(game.timer.timeConvert(game.timer.time));
-				if(game.timer.isTimeUp() && game.tracking.answered <= 5)
+				if(game.timer.isTimeUp())
 				{
-					game.tracking.wrong++;
 					game.tracking.answered++;
-					game.actions.nextQuestion();
-					game.timer.reset();
+					game.tracking.wrong++;
+					if(game.tracking.answered <= 5)
+					{
+						game.actions.interQuestion("Time Up!");
+						console.log("timeUp");
+					}
+					else
+					{
+						clearInterval(gameTimer);
+						game.actions.finalScore();
 
-				}
-				else if(game.timer.isTimeUp())
-				{
-					clearInterval(gameTimer);
-					game.tracking.wrong++;
-					game.tracking.answered++;
-					game.actions.finalScore();
+					}
 				}
 			},
 			isTimeUp: function ()
@@ -63,6 +79,10 @@ $(document).ready(function() {
 				{
 					return true;
 				}
+			},
+			stop: function()
+			{
+				clearInterval(gameTimer);
 			},
 			reset: function()
 			{
@@ -131,20 +151,26 @@ $(document).ready(function() {
 				if($this.data("quotations").indexOf(game.tracking.currentQuote) != -1)
 				{
 					game.tracking.correct++;
+					if(game.tracking.answered <= 5)
+					{
+						game.actions.interQuestion("Correct!");
+					}
+					else
+					{
+						game.actions.finalScore();
+					}
 				}
 				else
 				{
 					game.tracking.wrong++;
-				}
-
-				if(game.tracking.answered <= 5)
-				{
-					game.actions.nextQuestion();
-					game.timer.reset();
-				}
-				else
-				{
-					game.actions.finalScore();
+					if(game.tracking.answered <= 5)
+					{
+						game.actions.interQuestion("Incorrect!")
+					}
+					else
+					{
+						game.actions.finalScore();
+					}
 				}
 			},
 			finalScore: function()
@@ -164,6 +190,18 @@ $(document).ready(function() {
 				game.actions.nextQuestion();
 				$buttons.click(game.actions.checkAnswer);
 				$score.addClass("hidden");
+			},
+			interQuestion: function(text)
+			{
+				game.timer.stop();
+				$inter.empty();
+				$inter.text(text);
+				$inter.removeClass("hidden");
+				setTimeout(function() {
+					$inter.addClass("hidden");
+					game.actions.nextQuestion();
+					game.timer.reset();
+				}, 3000);
 			}
 		}
 	}
