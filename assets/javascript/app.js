@@ -117,7 +117,8 @@ $(document).ready(function() {
 			answered: 0,
 			correct: 0,
 			wrong: 0,
-			currentQuote: "Common sense is not so common."
+			currentQuote: "",
+			alreadyAsked: []
 		},
 		actions: 
 		{
@@ -141,8 +142,13 @@ $(document).ready(function() {
 					$buttons.eq(j).data(game.quizStuff[uniqueAnswers[j]]);
 					$buttons.eq(j).text(game.quizStuff[uniqueAnswers[j]].person);
 				}
-				var quoteList = $buttons.eq(Math.floor(Math.random() * 4)).data().quotations;
-				game.tracking.currentQuote = quoteList[(Math.floor(Math.random() * quoteList.length))];
+
+				do{
+					var quoteList = $buttons.eq(Math.floor(Math.random() * 4)).data().quotations;
+					game.tracking.currentQuote = quoteList[(Math.floor(Math.random() * quoteList.length))];
+				}
+				while(game.tracking.alreadyAsked.indexOf(game.tracking.currentQuote) !== -1);
+				game.tracking.alreadyAsked.push(game.tracking.currentQuote);
 				$question.text('"' + game.tracking.currentQuote + '"');
 			},
 			checkAnswer: function()
@@ -187,6 +193,7 @@ $(document).ready(function() {
 				game.tracking.answered = 0;
 				game.tracking.correct = 0;
 				game.tracking.wrong = 0;
+				game.tracking.alreadyAsked = [];
 				game.timer.reset();
 				game.actions.nextQuestion();
 				$buttons.click(game.actions.checkAnswer);
