@@ -141,7 +141,8 @@ $(document).ready(function() {
 					$buttons.eq(j).data(game.quizStuff[uniqueAnswers[j]]);
 					$buttons.eq(j).text(game.quizStuff[uniqueAnswers[j]].person);
 				}
-				game.tracking.currentQuote = $buttons.eq(Math.floor(Math.random() * 4)).data().quotations[Math.round(Math.random())];
+				var quoteList = $buttons.eq(Math.floor(Math.random() * 4)).data().quotations;
+				game.tracking.currentQuote = quoteList[(Math.floor(Math.random() * quoteList.length))];
 				$question.text('"' + game.tracking.currentQuote + '"');
 			},
 			checkAnswer: function()
